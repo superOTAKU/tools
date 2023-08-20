@@ -14,6 +14,9 @@ dependencies:
   pinia:
     specifier: ^2.0.0
     version: 2.0.0(vue@3.3.4)
+  pnpm:
+    specifier: ^8.6.12
+    version: 8.6.12
   roboto-fontface:
     specifier: '*'
     version: 0.4.1
@@ -1154,6 +1157,12 @@ packages:
     engines: {node: '>=8'}
     dependencies:
       find-up: 4.1.0
+
+  /pnpm@8.6.12:
+    resolution: {integrity: sha512-Eza4C5SO/Xl5IYozupbZ5NOA5leBRPYxmXmXfe7G4/4uCkRLhks84rB33aitxNZU/uMrnDGGjwrLktoKvPjqHA==}
+    engines: {node: '>=16.14'}
+    hasBin: true
+    dev: false
 
   /postcss-selector-parser@6.0.13:
     resolution: {integrity: sha512-EaV1Gl4mUEV4ddhDnv/xtj7sxwrwxdetHdWUGnT4VJQf+4d05v6lHYZr8N573k5Z0BViss7BDhfWtKS3+sfAqQ==}

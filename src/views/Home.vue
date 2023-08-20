@@ -1,31 +1,75 @@
 <template>
 <div>
-  <v-tabs v-model="activeTab" align-tabs="center" color="primary">
-    <v-tab value="all">全部</v-tab>
-    <v-tab value="develop">开发类</v-tab>
-    <v-tab value="image">图片类</v-tab>
+  <v-tabs v-model="activeTabId" align-tabs="center" color="primary" density="compact">
+    <v-tab v-for="catalog in allCatalogList" :value="catalog.id">
+      {{ catalog.name }}
+    </v-tab>
   </v-tabs>
-  <!--按分类展示-->
-  <div class="text-h6 my-5">开发</div>
-  <div class="wrapper">
-    <v-sheet class="d-flex flex-column align-center justify-center pa-5" style="cursor: pointer;">
-      <v-icon icon="mdi-clock-time-five-outline" :size="80"></v-icon>
-      <div class="text-subtitle-2 mt-2">时间戳转换</div>
-    </v-sheet>
-  </div>
-  <div class="text-h6 my-5">图片</div>
-  <div class="wrapper">
-    <v-sheet class="d-flex flex-column align-center justify-center pa-5" style="cursor: pointer;">
-      <v-icon icon="mdi-image" :size="80"></v-icon>
-      <div class="text-subtitle-2 mt-2">图片格式转换</div>
-    </v-sheet>
-  </div>
+  <v-sheet rounded color="white" class="pa-4 ma-4">
+    <template v-for="catalog in selectedCatalogs" :key="catalog.id">
+      <div class="text-h6 my-5">{{ catalog.name }}</div>
+      <div class="wrapper">
+        <v-sheet rounded 
+          class="d-flex flex-column align-center justify-center pa-5 bg-grey-lighten-5" 
+          style="cursor: pointer;"
+          v-for="tool in getToolsByCatalogId(catalog.id)"
+          @click="onToolClicked(tool)"
+          >
+          <v-icon :icon="tool.icon" :size="80"></v-icon>
+          <div class="text-subtitle-2 mt-2">{{ tool.name }}</div>
+        </v-sheet>
+      </div>
+    </template>
+  </v-sheet>
 </div>
 </template>
 
 <script setup>
-  import { ref } from 'vue';
-  const activeTab = ref('all')
+const allCatalogId = -1
+const allCatalog = {
+  id: allCatalogId,
+  name: '全部'
+}
+
+import {getTools} from '@/api/modules/tool'
+import {getCatalogs} from '@/api/modules/catalog'
+import {ref, computed} from 'vue'
+import { useRouter } from 'vue-router';
+
+const router = useRouter()
+
+const tools = ref([])
+const catalogs = ref([])
+
+const activeTabId = ref(allCatalogId)
+
+const selectedCatalogs = computed(() => {
+  if (activeTabId.value === allCatalogId) {
+    return catalogs.value
+  } else {
+    return catalogs.value.filter(e => e.id === activeTabId.value)
+  }
+})
+
+const allCatalogList = computed(() => {
+  return [allCatalog, ...catalogs.value]
+})
+
+const getToolsByCatalogId = (catalogId) => {
+  return tools.value.filter(e => e.catalogId === catalogId)
+}
+
+const onToolClicked = (tool) => {
+  router.push(tool.route)
+}
+
+getTools().then(res => {
+  tools.value = res
+})
+
+getCatalogs().then(res => {
+  catalogs.value = res
+})
 
 </script>
 
