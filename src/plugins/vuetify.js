@@ -23,4 +23,12 @@ export default createVuetify({
       },
     },
   },
+  defaults: {
+    global: {
+      density: "compact"
+    },
+    VBtn: {
+      density: "default"
+    }
+  }
 })

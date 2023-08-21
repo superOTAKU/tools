@@ -1,7 +1,7 @@
 <template>
 <div>
   <v-tabs v-model="activeTabId" align-tabs="center" color="primary" density="compact">
-    <v-tab v-for="catalog in allCatalogList" :value="catalog.id">
+    <v-tab v-for="catalog in allCatalogList" :value="catalog.id" :key="catalog.id">
       {{ catalog.name }}
     </v-tab>
   </v-tabs>
@@ -9,11 +9,12 @@
     <template v-for="catalog in selectedCatalogs" :key="catalog.id">
       <div class="text-h6 my-5">{{ catalog.name }}</div>
       <div class="wrapper">
-        <v-sheet rounded 
-          class="d-flex flex-column align-center justify-center pa-5 bg-grey-lighten-5" 
+        <v-sheet rounded
+          class="d-flex flex-column align-center justify-center pa-5 bg-grey-lighten-5"
           style="cursor: pointer;"
           v-for="tool in getToolsByCatalogId(catalog.id)"
           @click="onToolClicked(tool)"
+          :key="tool.id"
           >
           <v-icon :icon="tool.icon" :size="80"></v-icon>
           <div class="text-subtitle-2 mt-2">{{ tool.name }}</div>
@@ -34,9 +35,10 @@ const allCatalog = {
 import {getTools} from '@/api/modules/tool'
 import {getCatalogs} from '@/api/modules/catalog'
 import {ref, computed} from 'vue'
-import { useRouter } from 'vue-router';
+import { useRouter, useRoute } from 'vue-router';
 
 const router = useRouter()
+const route = useRoute()
 
 const tools = ref([])
 const catalogs = ref([])
@@ -63,13 +65,20 @@ const onToolClicked = (tool) => {
   router.push(tool.route)
 }
 
+const catalogId = Number(route.query.catalogId)
+
 getTools().then(res => {
   tools.value = res
 })
 
 getCatalogs().then(res => {
   catalogs.value = res
+  if (catalogId === allCatalogId || catalogs.value.find(e => e.id === catalogId)) {
+    activeTabId.value = catalogId
+  }
 })
+
+
 
 </script>
 
