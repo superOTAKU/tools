@@ -17,7 +17,7 @@
           <v-radio :label="shanghaiZone" :value="shanghaiZone"></v-radio>
         </v-radio-group>
       </div>
-      <div class="d-flex align-center">
+      <div class="d-flex align-center flex-wrap">
         <span>当前时间戳：</span>
         <span class="mr-4">{{ timestampDisplay }}</span>
         <span>当前日期：</span>
@@ -39,7 +39,7 @@
       </v-alert>
       <div>
         <div class="text-subtitle-1 font-weight-bold my-4">时间戳转日期</div>
-        <div class="d-flex align-start">
+        <div class="d-flex align-start flex-wrap">
           <span style="width: 300px;">
             <v-text-field v-model="form1.timestamp" label="时间戳" variant="underlined" clearable />
           </span>
@@ -61,7 +61,7 @@
       </div>
       <div>
         <div class="text-subtitle-1 font-weight-bold my-4">日期转时间戳</div>
-        <div class="d-flex align-start">
+        <div class="d-flex align-start flex-wrap">
           <span style="width: 300px;">
             <v-text-field v-model="form2.dateStr" label="日期" variant="underlined" clearable />
           </span>
