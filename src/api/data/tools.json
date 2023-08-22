@@ -10,6 +10,7 @@
         "id": 2,
         "name": "图片格式转换",
         "catalogId": 2,
-        "icon": "mdi-image"
+        "icon": "mdi-image",
+        "route": "/image/transformer"
     }
 ]

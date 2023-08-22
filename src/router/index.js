@@ -27,7 +27,12 @@ const routes = [
         path: 'develop/timestamp',
         name: 'Timestamp',
         component: () => import('@/views/develop/timestamp/index.vue')
-      }
+      },
+      {
+        path: 'image/transformer',
+        name: 'ImageTransformer',
+        component: () => import('@/views/image/transformer/index.vue')
+      },
     ],
   },
 ]

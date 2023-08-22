@@ -29,6 +29,9 @@ export default createVuetify({
     },
     VBtn: {
       density: "default"
+    },
+    VTabs: {
+      density: "default"
     }
   }
 })

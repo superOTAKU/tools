@@ -1,6 +1,6 @@
 <template>
 <div>
-  <v-tabs v-model="activeTabId" align-tabs="center" color="primary" density="compact">
+  <v-tabs v-model="activeTabId" align-tabs="center" color="primary">
     <v-tab v-for="catalog in allCatalogList" :value="catalog.id" :key="catalog.id">
       {{ catalog.name }}
     </v-tab>
