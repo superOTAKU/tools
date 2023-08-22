@@ -12,7 +12,8 @@ NProgress.configure({
 
 const routes = [
   {
-    path: '/',
+    path: process.env.NODE_ENV === 'production' ? '/tools' : '/',
+    name: 'Layout',
     component: () => import('@/layouts/default/Default.vue'),
     children: [
       {
