@@ -12,10 +12,9 @@ NProgress.configure({
 
 const routes = [
   {
-    path: process.env.NODE_ENV === 'production' ? '/tools' : '/',
+    path: '/',
     name: 'Layout',
     component: () => import('@/layouts/default/Default.vue'),
-
     children: [
       {
         path: '',
@@ -37,10 +36,14 @@ const routes = [
       },
     ],
   },
+  {
+    path: '/:catchAll(.*)',
+    component: () => import('@/views/NotFound.vue'),
+  },
 ]
 
 const router = createRouter({
-  history: createWebHistory(process.env.BASE_URL),
+  history: createWebHistory(import.meta.env.VITE_BASE_URL),
   routes,
 })
 
