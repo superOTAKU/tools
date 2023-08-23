@@ -18,6 +18,7 @@
     "@uppy/locales": "^3.3.0",
     "@uppy/progress-bar": "^3.0.3",
     "core-js": "^3.29.0",
+    "crypto-js": "^4.1.1",
     "jszip": "^3.10.1",
     "luxon": "^3.4.0",
     "nprogress": "^0.2.0",

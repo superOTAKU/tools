@@ -12,5 +12,12 @@
         "catalogId": 2,
         "icon": "mdi-image",
         "route": "/image/transformer"
+    },
+    {
+        "id": 3,
+        "name": "加解密",
+        "catalogId": 1,
+        "icon": "mdi-key-outline",
+        "route": "/develop/crypto"
     }
 ]
