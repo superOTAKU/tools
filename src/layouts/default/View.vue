@@ -2,7 +2,7 @@
   <v-main>
     <v-container style="max-width: 1200px; position: relative;">
       <router-view />
-      <div style="position: absolute; right: 120px;" v-if="showTopBtn" @click="onTopBtnClicked">
+      <div style="position: absolute; right: 90px;" v-if="showTopBtn" @click="onTopBtnClicked">
         <v-tooltip text="滑动到顶部">
           <template #activator="{props}">
             <v-btn size="large" icon="mdi-arrow-up" color="primary" v-bind="props" style="position: fixed; bottom: 10px;"/>

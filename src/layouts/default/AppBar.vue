@@ -14,13 +14,12 @@
   </v-app-bar>
   <v-overlay v-model="overlay" @click="onOverlayClicked">
     <div style="width: 100vw; height: 100vh;" class="d-flex flex-column align-center justify-center">
-      <v-sheet color="white" rounded class="pa-4" style="width: 80%;" @click="onSearchDivClicked">
+      <v-sheet color="white" rounded class="pa-4" style="width: 90%;" @click="onSearchDivClicked">
           <v-text-field variant="solo" label="搜索工具" density="default"
-            style="width: 100%;"
             clearable
             hide-details v-model="searchContent"/>
             <div class="mt-2 text-caption" v-if="searchedTools.length > 0">搜索结果：</div>
-            <v-list class="mt-2">
+            <v-list class="mt-2" v-if="searchedTools.length > 0">
               <v-list-item
                 v-for="tool in searchedTools"
                 :key="tool.id"

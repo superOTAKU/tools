@@ -4,7 +4,10 @@
 </div>
 <v-sheet class="pa-4 ma-4" rounded color="white">
   <div style="position: relative;">
-    <v-textarea @focus="isFocusing = true" @blur="isFocusing = false" label="内容" @mouseover="onMouseEnterText" @mouseleave="onMouseLeaveText" auto-grow variant="solo" v-model="content" clearable></v-textarea>
+    <v-textarea
+      @focus="isFocusing = true" @blur="isFocusing = false"
+      label="内容" @mouseover="onMouseEnterText" @mouseleave="onMouseLeaveText"
+      auto-grow variant="solo" v-model="content" clearable></v-textarea>
     <v-tooltip text="复制内容"
         v-if="(isHovering || isFocusing) && content"
         location="start"
@@ -15,7 +18,7 @@
           @mouseover="onMouseEnterBtn" @mouseleave="onMouseLeaveBtn"
           v-bind="props"
           icon="mdi-content-copy"
-          class="copy-btn"
+          class="copy-content"
           @click="onCopyBtnClicked"
           ></v-btn>
       </template>
@@ -85,11 +88,11 @@
   }
 
   const onMd5BtnClicked = () => {
-    content.value = CryptoJS.MD5(content.value)
+    content.value = CryptoJS.MD5(content.value).toString()
   }
 
   const onSha256BtnClicked = () => {
-    content.value = CryptoJS.SHA256(content.value)
+    content.value = CryptoJS.SHA256(content.value).toString()
   }
 
   const onURLEncodeBtnClicked = () => {
@@ -101,7 +104,7 @@
   }
 
   const onCopyBtnClicked = () => {
-    const clipboard = new Clipboard(".copy-btn", {text: () => content.value})
+    const clipboard = new Clipboard(".copy-content", {text: () => content.value})
     clipboard.on('success', () => {
       snackbar.value = {
         show: true,
