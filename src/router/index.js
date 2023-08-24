@@ -38,6 +38,11 @@ const routes = [
         path: 'develop/crypto',
         name: 'Crypto',
         component: () => import('@/views/develop/crypto/index.vue')
+      },
+      {
+        path: 'develop/uuid',
+        name: 'UUID',
+        component: () => import('@/views/develop/uuid/index.vue')
       }
     ],
   },

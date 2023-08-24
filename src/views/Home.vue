@@ -1,6 +1,6 @@
 <template>
 <div>
-  <v-tabs v-model="activeTabId" align-tabs="center" color="primary">
+  <v-tabs v-model="activeTabId" align-tabs="center" color="primary" show-arrows>
     <v-tab v-for="catalog in allCatalogList" :value="catalog.id" :key="catalog.id">
       {{ catalog.name }}
     </v-tab>
@@ -9,16 +9,20 @@
     <template v-for="catalog in selectedCatalogs" :key="catalog.id">
       <div class="text-h6 my-5">{{ catalog.name }}</div>
       <div class="wrapper">
-        <v-sheet rounded
-          class="d-flex flex-column align-center justify-center pa-5 bg-grey-lighten-5"
-          style="cursor: pointer;"
-          v-for="tool in getToolsByCatalogId(catalog.id)"
-          @click="onToolClicked(tool)"
-          :key="tool.id"
-          >
-          <v-icon :icon="tool.icon" :size="80"></v-icon>
-          <div class="text-subtitle-2 mt-2">{{ tool.name }}</div>
-        </v-sheet>
+        <v-hover v-for="tool in getToolsByCatalogId(catalog.id)" :key="tool.id">
+          <template v-slot:default="{ isHovering, props }">
+            <v-sheet rounded
+              class="d-flex flex-column align-center justify-center pa-5"
+              :class="{'bg-grey-lighten-5': !isHovering, 'bg-grey-lighten-4': isHovering}"
+              style="cursor: pointer;"
+              @click="onToolClicked(tool)"
+              v-bind="props"
+              >
+              <v-icon :icon="tool.icon" :size="80"></v-icon>
+              <div class="text-subtitle-2 mt-2">{{ tool.name }}</div>
+            </v-sheet>
+          </template>
+        </v-hover>
       </div>
     </template>
   </v-sheet>

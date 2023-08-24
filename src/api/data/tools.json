@@ -19,5 +19,12 @@
         "catalogId": 1,
         "icon": "mdi-key-outline",
         "route": "/develop/crypto"
+    },
+    {
+        "id": 4,
+        "name": "UUID生成",
+        "catalogId": 1,
+        "icon": "mdi-identifier",
+        "route": "/develop/uuid"
     }
 ]

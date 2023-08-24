@@ -14,7 +14,7 @@
         <span class="mr-4">选择目标格式：</span>
         <span style="width: 100px;" class="mr-4">
           <v-select
-            :items="['jpeg', 'png', 'webp', 'gif', 'svg+xml', 'bmp', 'tiff', 'ico', 'jpg', 'jfif', 'pjpeg', 'pjp']"
+            :items="['jpeg', 'png', 'webp', 'gif', 'bmp', 'tiff', 'ico', 'jpg', 'jfif', 'pjpeg', 'pjp']"
             v-model="targetFormat" hide-details variant="underlined"/>
         </span>
         <v-btn v-if="step === STEP_PENDING_TRANSFORM" color="primary"
