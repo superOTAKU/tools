@@ -1,0 +1,1 @@
+import{m as t,a as n}from"./VSheet-64ccf2d2.js";import{v as r,m as s}from"./index-51c4f481.js";const m=r({name:"VContainer",props:{fluid:{type:Boolean,default:!1},...t()},setup(e,a){let{slots:o}=a;return n(()=>s(e.tag,{class:["v-container",{"v-container--fluid":e.fluid}]},o)),{}}});export{m as V};
